@@ -1,0 +1,62 @@
+spring:
+    
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: 123456
+    #alibaba的druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+  #springboot整合thymeleaf
+  thymeleaf:
+    #开发时打开，测试时关闭
+    cache: false
+    #检查摸板是否存在，存在则呈现
+    check-template-location: true
+    content-type: text/html; charset=utf-8
+    #启用MVC Thymeleaf视图分辨率
+    enabled: true
+    excluded-view-names:
+    prefix: classpath:/templates/
+    suffix: .html
+    #摸板编码
+    mode: LEGACYHTML5
+    
+  mail: 
+    host: smtp.qq.com
+    username: 603557506@qq.com
+    #qq邮箱-》设置-》账户-》P0P3/SMTP服务：开启服务后会获得QQ授权码rzloodqkndfhbddd,qq邮箱就是写授权码，163直接写密码
+    password: rzloodqkndfhbddd
+    properties:
+      mail: 
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  #文件上传          
+  http:
+    multipart:
+      max-request-size: 500Mb  #总的不超过500Mb
+      max-file-size: 500Mb    #单个文件不超过500Mb
+  #neo4j图形数据库配置
+  data: 
+    neo4j:
+      uri: http://localhost:7474
+      username: neo4j
+      password: 123456   
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: org.dzq.springbootmybatis.pojo
+  config-location: classpath:mybatis/mybatis-config.xml
+  
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+  
+
+  
